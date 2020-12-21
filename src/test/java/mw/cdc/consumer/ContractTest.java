@@ -26,4 +26,13 @@ public class ContractTest {
              Matchers.equalTo("Child"));
          ;
       }
+
+     /* @DisplayName("Should asnwer Warm whe get on /askmeaboutcolour and colour red")
+      @Test
+      void shouldAsnwerWarmWheGetOnAskmeaboutcolourAndColourRed() {
+          // given
+          RestAssured.given().when().param("colour","RED").get(BASEURL + "/askmeaboutcolour").then().statusCode(200).body(
+              Matchers.equalTo("Warm"));
+          ;
+       }*/
 }
