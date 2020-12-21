@@ -1,6 +1,7 @@
 package mw.cdc.consumer;
 
 import io.restassured.RestAssured;
+import org.assertj.core.api.Fail;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -17,4 +18,12 @@ public class ContractTest {
             Matchers.equalTo("Yes"));
      }
 
+     @DisplayName("Should answer Child when get on /askmeaboutage and age 10")
+     @Test
+     void shouldAnswerChildWhenGetOnAskmeaboutageAndAge10() {
+      // given
+         RestAssured.given().when().param("age","10").get(BASEURL + "/askmeaboutage").then().statusCode(200).body(
+             Matchers.equalTo("Child"));
+         ;
+      }
 }
