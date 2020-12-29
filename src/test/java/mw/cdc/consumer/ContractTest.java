@@ -35,4 +35,5 @@ public class ContractTest {
               Matchers.equalTo("Warm"));
 
        }
+
 }

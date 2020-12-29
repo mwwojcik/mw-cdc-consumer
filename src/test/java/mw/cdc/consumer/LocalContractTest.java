@@ -2,6 +2,7 @@ package mw.cdc.consumer;
 
 import io.restassured.RestAssured;
 import javax.annotation.PostConstruct;
+import org.assertj.core.api.Fail;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -46,5 +47,21 @@ public class LocalContractTest {
                    .statusCode(200)
                    .body(Matchers.equalTo("Yes"));
     }
+
+
+    @DisplayName("OR gate should return True when True False is given")
+    @Test
+    void orGateShouldReturnTrueWhenTrueFalseIsGiven() {
+        RestAssured.given().when().param("operandA","1").param("operandB","0").get(BASEURL + "/logic/or").then().statusCode(200).body(
+            Matchers.equalTo("1"));
+    }
+
+    @DisplayName("AND gate should return True when True True is given")
+    @Test
+    void andGateShouldReturnTrueWhenTrueTrueIsGiven() {
+        RestAssured.given().when().param("operandA","1").param("operandB","1").get(BASEURL + "/logic/and").then().statusCode(200).body(
+            Matchers.equalTo("1"));
+
+     }
 }
 
